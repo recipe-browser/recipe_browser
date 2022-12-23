@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return ['Laravel' => app()->version()];
 });
 
-Route::get('/{pathMatch}', function(){return view('welcome');})->where('pathMatch', ".*");
+require __DIR__.'/auth.php';
