@@ -1,17 +1,18 @@
 <template>
     <SignIn title="Set new password">
-      <form class="mt-8 space-y-6" action="#" method="POST">
+      <div class="m-2 p-2 text-green-900 font-semibold bg-green-300 rounded-md" v-if="authStore.status"> {{ authStore.status }}</div>
+      <form class="mt-8 space-y-6" @submit.prevent="authStore.handleResetPassword(form)">
         <input type="hidden" name="remember" value="true"/>
         <div class="rounded-md shadow-sm -space-y-px">
           <div>
             <label for="new-password" class="sr-only">New Password</label>
-            <input id="new-password" name="password" type="password" required=""
+            <input id="new-password" name="password" v-model="form.password" type="password" required=""
                    class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                    placeholder="New Password"/>
           </div>
           <div>
             <label for="password-repeat" class="sr-only">Repeat Password</label>
-            <input id="password-repeat" name="password_repeat" type="password" required=""
+            <input id="password-repeat" name="password_repeat"  v-model="form.password_confirmation" type="password" required=""
                    class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                    placeholder="Repeat Password"/>
           </div>
@@ -41,4 +42,17 @@
   <script setup>
   import {LockClosedIcon} from '@heroicons/vue/20/solid'
   import SignIn from "../components/SignIn.vue";
+  import { useAuthStore } from '../store/auth';
+  import {ref} from 'vue'
+  import {useRoute} from 'vue-router'
+
+  const route = useRoute()
+  const authStore = useAuthStore()
+
+  const form = ref({
+    password: '',
+    password_confirmation: '',
+    email: route.query.email,
+    token: route.params.token
+  })
   </script>

@@ -1,30 +1,37 @@
 import { createRouter, createWebHistory } from "vue-router"
+import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Recipes from '../views/Recipes.vue'
-import RequestPassword from "../views/RequestPassword.vue"
+import ForgotPassword from "../views/ForgotPassword.vue"
 import ResetPassword from "../views/ResetPassword.vue"
-import SignUp from '../views/SignUp.vue'
+import Register from '../views/Register.vue'
+import MyAccount from '../views/MyAccount.vue'
 
 
 const routes = [
+    {
+        path: '/',
+        name: 'home',
+        component: Home
+    },
     {
         path: '/login',
         name: 'login',
         component: Login
     },
     {
-        path: '/sign-up',
-        name: 'sign-up',
-        component: SignUp
+        path: '/register',
+        name: 'register',
+        component: Register
     },
     {
-        path: '/request-password',
-        name: 'requestPassword',
-        component: RequestPassword,
+        path: '/forgot-password',
+        name: 'forgotPassword',
+        component: ForgotPassword,
         
     },
     {
-        path: '/reset-password/:token',
+        path: '/password-reset/:token',
         name: 'resetPassword',
         component: ResetPassword,
         meta: {
@@ -35,6 +42,11 @@ const routes = [
         path: '/recipes',
         name: 'recipes',
         component: Recipes
+    },
+    {
+        path: '/my_account',
+        name: 'myAccount',
+        component: MyAccount
     },
 ]
 
