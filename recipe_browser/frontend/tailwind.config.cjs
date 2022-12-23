@@ -4,8 +4,11 @@ module.exports = {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  purge: [ './src/**/*.html', './src/**/*.vue', './src/**/*.jsx', ],
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 }
