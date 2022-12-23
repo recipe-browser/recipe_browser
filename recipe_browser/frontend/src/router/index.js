@@ -6,7 +6,7 @@ import ForgotPassword from "../views/ForgotPassword.vue"
 import ResetPassword from "../views/ResetPassword.vue"
 import Register from '../views/Register.vue'
 import MyAccount from '../views/MyAccount.vue'
-
+import Contact from '../views/Contact.vue'
 
 const routes = [
     {
@@ -47,6 +47,11 @@ const routes = [
         path: '/my_account',
         name: 'myAccount',
         component: MyAccount
+    },
+    {
+        path: '/contact',
+        name: 'contact',
+        component: Contact
     },
 ]
 
